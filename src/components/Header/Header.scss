@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  &__navigation {
+    max-width: 50rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__link {
+    padding: 1.5rem;
+    display: block;
+    font-size: 3rem;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+
+    &:hover {
+      color: #dabfbf;
+    }
+  }
+}
