@@ -1,6 +1,6 @@
 export default class gotAPIservice {
   constructor() {
-    this._apiBase = "https://www.anapioficeandfire.com/api";
+    this._apiBase = "https://www.anapioficeandfire.com/api/";
   }
 
   getResource = async (url) => {
@@ -15,12 +15,12 @@ export default class gotAPIservice {
   }
 
   getItem = async (url) => {
-    const response = this.getResource(url);
+    const response = await this.getResource(url);
     return this.transformItem(response);
   }
 
   getAllItems = async (url) => {
-    const response = this.getResource(url);
+    const response = await this.getResource(url);
     return response.map(item => this.transformItem(item))
   }
 
