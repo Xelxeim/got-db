@@ -1,7 +1,11 @@
+import formatService from "./format-service";
+
 export default class gotAPIservice {
   constructor() {
     this._apiBase = "https://www.anapioficeandfire.com/api/";
   }
+
+  transformItem = new formatService().transformItem;
 
   getResource = async (url) => {
     const response = await fetch(`${this._apiBase}${url}`);
@@ -22,14 +26,5 @@ export default class gotAPIservice {
   getAllItems = async (url) => {
     const response = await this.getResource(url);
     return response.map(item => this.transformItem(item))
-  }
-
-  transformItem(item) {
-    const formattedItem = {};
-
-    for (let key in item) {
-      formattedItem[key] = item[key] ? item[key] : "no data :(";
-    }
-    return formattedItem;
   }
 }

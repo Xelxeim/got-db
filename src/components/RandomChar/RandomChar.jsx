@@ -11,12 +11,12 @@ const RandomChar = () => {
     [error, setError] = useState(false),
     [loading, setLoading] = useState(true);
 
-  const apiService = new gotAPIservice();
+  const gotAPIserviceInstance = new gotAPIservice();
   
   useEffect(() => {
-    const timer = setInterval( () => {
+    const timer = setInterval(() => {
       const currentId = Math.floor(Math.random() * 250 + 25 )
-      apiService.getItem(`characters/${currentId}`)
+      gotAPIserviceInstance.getItem(`characters/${currentId}`)
         .then(character => {
           setCharacter(character);
         })
