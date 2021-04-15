@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import formatService from "../../services/format-service";
-
 import "./Header.scss";
 
 const Header = () => {
-  const navLinks = ["characters", "books", "houses"];
 
   return (
     <header className="header">

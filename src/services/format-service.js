@@ -1,4 +1,4 @@
-export default class formatService {
+class formatService {
 
   transformItem(item) {
     const formattedItem = {};
@@ -13,3 +13,5 @@ export default class formatService {
     return item.slice(0, 1).toUpperCase() + item.slice(1);
   }
 }
+
+export default new formatService();
