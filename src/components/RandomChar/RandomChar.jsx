@@ -8,17 +8,15 @@ import "./RandomChar.scss";
 
 const RandomChar = () => {
   const [character, setCharacter] = useState({}),
-    [error, setError] = useState(false),
     [loading, setLoading] = useState(true);
   
   useEffect(() => {
     const timer = setInterval(() => {
       const currentId = Math.floor(Math.random() * 250 + 25 )
-      gotAPIservice.getItem(`characters/${currentId}`)
+      gotAPIservice.getRandomResource(`characters/${currentId}`)
         .then(character => {
           setCharacter(character);
         })
-        .catch(() => setError(true))
         .finally(() => setLoading(false));
     }, 1500);
     return () => clearInterval(timer);

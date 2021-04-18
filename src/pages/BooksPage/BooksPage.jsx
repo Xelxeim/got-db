@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import ItemList from "../../components/ItemList";
 import ItemDetails from "../../components/ItemDetails";
@@ -15,7 +15,7 @@ const BooksPage = () => {
   return (
     <div className="container">
       <ItemList itemType="books" onSelect={onSelect} />
-      <ItemDetails selectedItem={selectedItem}/>
+      <ItemDetails itemType="book" selectedItem={selectedItem}/>
     </div>
   )
 }

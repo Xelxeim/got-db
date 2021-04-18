@@ -7,7 +7,7 @@ class gotAPIservice {
 
   transformItem = formatService.transformItem;
 
-  getResource = async (url) => {
+  getRandomResource = async (url) => {
     const response = await fetch(`${this._apiBase}${url}`);
 
     if (!response.ok) {
@@ -15,16 +15,18 @@ class gotAPIservice {
     }
 
     const result = await response.json();
-    return result;
+
+    return this.transformItem(result)
   }
 
-  getItem = async (url) => {
-    const response = await this.getResource(url);
-    return this.transformItem(response);
+  getResourceWithPage = (url, page = 1) => {
+    const response = fetch(`${this._apiBase}${url}/?page=${page}`)
+      .then(item => item.json());
+    return response;
   }
 
-  getAllItems = async (url) => {
-    const response = await this.getResource(url);
+  getAllItems = async (url, page) => {
+    const response = await this.getResourceWithPage(url, page);
     return response.map(item => this.transformItem(item))
   }
 
@@ -32,7 +34,6 @@ class gotAPIservice {
     const response = fetch(url)
       .then(res => res.json())
     return response
-    
   }
 }
 
